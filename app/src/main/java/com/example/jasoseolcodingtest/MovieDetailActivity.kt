@@ -2,17 +2,15 @@ package com.example.jasoseolcodingtest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.jasoseolcodingtest.databinding.ActivityMainBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.jasoseolcodingtest.databinding.ActivityMovieDetailBinding
 import androidx.databinding.DataBindingUtil.setContentView
 
-@AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MovieDetailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMovieDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = setContentView(this, R.layout.activity_main)
+        binding = setContentView(this, R.layout.activity_movie_detail)
         binding.lifecycleOwner = this
     }
 }

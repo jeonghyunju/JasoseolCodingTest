@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">JasoseolCodingTest</string>
+    <string name="naverSearchTitle">네이버 영화 검색</string>
+    <string name="search_hint">검색어를 입력하세요.</string>
+    <string name="favorite">즐겨찾기</string>
+    <string name="favorite_list">즐겨찾기 목록</string>
+    <string name="director">감독:</string>
+    <string name="actor">출연:</string>
+    <string name="rate">평점:</string>
 </resources>

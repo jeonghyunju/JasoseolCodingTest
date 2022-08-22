@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/iv_poster"
+            android:layout_width="75dp"
+            android:layout_height="90dp"
+            android:scaleType="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:background="@color/gray200"/>
+
+        <ImageView
+            android:id="@+id/iv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_filled_star"
+            android:onClick="@{clickListener}"
+            app:layout_constraintTop_toTopOf="@id/iv_poster"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/iv_poster"
+            app:layout_constraintEnd_toStartOf="@id/iv_favorite"
+            app:layout_constraintStart_toEndOf="@id/iv_poster"
+            tools:text="1991, 봄"/>
+
+        <TextView
+            android:id="@+id/tv_director_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/director"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_actor_title"
+            app:layout_constraintStart_toStartOf="@id/tv_title"/>
+
+        <TextView
+            android:id="@+id/tv_director"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_actor_title"
+            app:layout_constraintStart_toEndOf="@id/tv_director_title"
+            tools:text="감독이름"/>
+
+        <TextView
+            android:id="@+id/tv_actor_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/actor"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_director_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_rate_title"
+            app:layout_constraintStart_toStartOf="@id/tv_title"/>
+
+        <TextView
+            android:id="@+id/tv_actor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_director_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_rate_title"
+            app:layout_constraintStart_toEndOf="@id/tv_actor_title"
+            tools:text="배우이름"/>
+
+        <TextView
+            android:id="@+id/tv_rate_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rate"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_actor_title"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintBottom_toBottomOf="@id/iv_poster"/>
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/tv_rate_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_rate_title"
+            app:layout_constraintStart_toEndOf="@id/tv_rate_title"
+            tools:text="3.45"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray200"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
