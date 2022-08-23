@@ -1,9 +1,9 @@
-package com.example.jasoseolcodingtest.domain
+package com.example.jasoseolcodingtest.domain.remote
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.jasoseolcodingtest.model.Movie
+import com.example.jasoseolcodingtest.domain.remote.Api
 import com.example.jasoseolcodingtest.model.MovieItem
 import retrofit2.HttpException
 import java.io.IOException

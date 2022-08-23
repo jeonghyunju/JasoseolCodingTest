@@ -1,4 +1,4 @@
-package com.example.jasoseolcodingtest.domain
+package com.example.jasoseolcodingtest.domain.remote
 
 import com.example.jasoseolcodingtest.model.Movie
 import retrofit2.Response

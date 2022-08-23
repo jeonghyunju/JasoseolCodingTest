@@ -31,6 +31,10 @@ class MovieAdapter(listener: MovieClickEvent): PagingDataAdapter<MovieItem, Movi
         holder.bind(movieItem)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     inner class MovieViewHolder(
         private val binding: ListItemMovieBinding
     ): RecyclerView.ViewHolder(binding.root) {
@@ -38,7 +42,17 @@ class MovieAdapter(listener: MovieClickEvent): PagingDataAdapter<MovieItem, Movi
             binding.setClickListener {
                 when(it.id) {
                     R.id.cl_movie -> { mCallback.goMovieDetail(binding.movieItem!!) }
-                    R.id.iv_favorite -> { mCallback.addFavorite(binding.movieItem!!) }
+                    R.id.iv_favorite -> {
+                        if(binding.movieItem!!.isFavorite) {
+                            binding.movieItem!!.isFavorite = false
+                            binding.ivFavorite.setImageResource(R.drawable.ic_filled_star_gray)
+                        }else {
+                            binding.movieItem!!.isFavorite = true
+                            binding.ivFavorite.setImageResource(R.drawable.ic_filled_star_yellow)
+                        }
+
+                        mCallback.favoriteClick(binding.movieItem!!)
+                    }
                 }
             }
         }

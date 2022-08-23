@@ -1,6 +1,7 @@
-package com.example.jasoseolcodingtest.domain
+package com.example.jasoseolcodingtest.module
 
 import com.example.jasoseolcodingtest.BuildConfig
+import com.example.jasoseolcodingtest.domain.remote.Api
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

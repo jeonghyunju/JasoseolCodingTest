@@ -1,7 +1,9 @@
 package com.example.jasoseolcodingtest
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity(), MovieClickEvent {
 
         binding.rvMovie.adapter = movieAdapter
 
-        binding.etSearch.setOnEditorActionListener { v, actionId, event ->
+        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_SEARCH) {
                 if(viewModel.searchText.value != null &&
                         viewModel.searchText.value!!.isNotEmpty()) {
@@ -57,15 +59,13 @@ class MainActivity : AppCompatActivity(), MovieClickEvent {
         }
     }
 
-    private fun setUpObserver() {
-
-    }
-
     override fun goMovieDetail(movie: MovieItem) {
-
+        val intent = Intent(this, MovieDetailActivity::class.java)
+        intent.putExtra("movie", movie)
+        startActivity(intent)
     }
 
-    override fun addFavorite(movie: MovieItem) {
-
+    override fun favoriteClick(movie: MovieItem) {
+        viewModel.favoriteClickEvent(movie)
     }
 }

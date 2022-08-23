@@ -1,6 +1,9 @@
 package com.example.jasoseolcodingtest.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Movie(
     @field:SerializedName("lastBuildDate") val lastBuildDate: String,
@@ -10,7 +13,9 @@ data class Movie(
     @field:SerializedName("items") val items: List<MovieItem>
 )
 
+@Entity(tableName = "favorite")
 data class MovieItem(
+    @PrimaryKey val idx: Int,
     @field:SerializedName("title") val title: String,
     @field:SerializedName("link") val link: String,
     @field:SerializedName("image") val image: String,
@@ -19,4 +24,4 @@ data class MovieItem(
     @field:SerializedName("actor") val actor: String,
     @field:SerializedName("userRating") val userRating: Double,
     var isFavorite: Boolean = false,
-)
+): Serializable

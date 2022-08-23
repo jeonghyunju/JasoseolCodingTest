@@ -1,17 +1,24 @@
 package com.example.jasoseolcodingtest.domain
 
+import androidx.lifecycle.LiveData
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.example.jasoseolcodingtest.domain.local.FavoriteDAO
+import com.example.jasoseolcodingtest.domain.remote.Api
+import com.example.jasoseolcodingtest.domain.remote.MoviePagingSource
 import com.example.jasoseolcodingtest.model.BaseDataSource
-import com.example.jasoseolcodingtest.model.Movie
 import com.example.jasoseolcodingtest.model.MovieItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(
-    private val api: Api
+    private val api: Api,
+    private val favoriteDAO: FavoriteDAO
 ): BaseDataSource() {
 
     @ExperimentalPagingApi
@@ -32,5 +39,21 @@ class MovieRepository @Inject constructor(
 
     private fun getDefaultPageConfig(): PagingConfig {
         return PagingConfig(pageSize = 30, enablePlaceholders = true)
+    }
+
+    fun getFavoriteMovie(): LiveData<List<MovieItem>> {
+        return favoriteDAO.getFavorite()
+    }
+
+    fun insertFavoriteMovie(movie: MovieItem) {
+        CoroutineScope(Dispatchers.IO).launch {
+            favoriteDAO.insertFavorite(movie)
+        }
+    }
+
+    fun deleteFavoriteMovie(movie: MovieItem) {
+        CoroutineScope(Dispatchers.IO).launch {
+            favoriteDAO.delete(movie)
+        }
     }
 }

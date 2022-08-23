@@ -44,7 +44,7 @@
                 android:id="@+id/iv_btn_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_filled_star"
+                android:src="@drawable/ic_filled_star_gray"
                 app:tint="@color/yellow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

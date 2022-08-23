@@ -27,31 +27,18 @@ class MainViewModel @Inject constructor(
 
     val searchText = MutableLiveData<String>()
 
-    private val _movies = MutableLiveData<List<Movie>>()
-    val movies: LiveData<List<Movie>> = _movies
-
-    /*val editorActionListener: TextView.OnEditorActionListener =
-        TextView.OnEditorActionListener { _, actionId, _ ->
-            run {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    if(searchText.value != null && searchText.value!!.isNotEmpty()) {
-                        viewModelScope.launch(Dispatchers.IO) {
-                            getSearchMovie().collectLatest { list ->
-                                _movies.postValue(list)
-                            }
-                        }
-                    }
-                    true
-                }else {
-                    false
-                }
-                true
-            }
-        }*/
-
     @OptIn(ExperimentalPagingApi::class)
     fun getSearchMovie(): Flow<PagingData<MovieItem>> {
         val response = movieRepository.getSearchResults(searchText.value!!)
         return response.cachedIn(viewModelScope)
     }
+
+    fun favoriteClickEvent(movie: MovieItem) {
+        if(movie.isFavorite) {
+            movieRepository.insertFavoriteMovie(movie)
+        }else {
+            movieRepository.deleteFavoriteMovie(movie)
+        }
+    }
+
 }
