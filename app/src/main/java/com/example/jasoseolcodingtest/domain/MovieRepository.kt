@@ -47,7 +47,7 @@ class MovieRepository @Inject constructor(
 
     fun insertFavoriteMovie(movie: MovieItem) {
         CoroutineScope(Dispatchers.IO).launch {
-            favoriteDAO.insertFavorite(movie)
+            favoriteDAO.insert(movie)
         }
     }
 

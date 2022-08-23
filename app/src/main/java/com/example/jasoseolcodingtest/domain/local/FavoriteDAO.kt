@@ -13,7 +13,7 @@ interface FavoriteDAO {
     fun hasDuplicate(title: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(movie: MovieItem)
+    suspend fun insert(vararg movie: MovieItem)
 
     @Delete
     suspend fun delete(movie: MovieItem)

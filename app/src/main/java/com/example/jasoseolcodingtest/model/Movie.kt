@@ -15,7 +15,7 @@ data class Movie(
 
 @Entity(tableName = "favorite")
 data class MovieItem(
-    @PrimaryKey val idx: Int,
+    @PrimaryKey(autoGenerate = true) val idx: Int,
     @field:SerializedName("title") val title: String,
     @field:SerializedName("link") val link: String,
     @field:SerializedName("image") val image: String,

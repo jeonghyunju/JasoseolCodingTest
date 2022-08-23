@@ -8,6 +8,9 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="viewModel"
+            type="com.example.jasoseolcodingtest.viewModel.FavoriteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

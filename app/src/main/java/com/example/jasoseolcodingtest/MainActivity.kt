@@ -48,6 +48,12 @@ class MainActivity : AppCompatActivity(), MovieClickEvent {
             }
             true
         }
+        setClickListener()
+    }
+    private fun setClickListener() {
+        binding.setClickListener {
+            goFavoriteList()
+        }
     }
 
     private fun searchMovie() {
@@ -57,6 +63,11 @@ class MainActivity : AppCompatActivity(), MovieClickEvent {
                 movieAdapter.submitData(list)
             }
         }
+    }
+
+    private fun goFavoriteList() {
+        val intent = Intent(this, FavoriteActivity::class.java)
+        startActivity(intent)
     }
 
     override fun goMovieDetail(movie: MovieItem) {
