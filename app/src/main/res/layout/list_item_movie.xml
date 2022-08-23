@@ -8,9 +8,13 @@
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+        <variable
+            name="movieItem"
+            type="com.example.jasoseolcodingtest.model.MovieItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_movie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
@@ -21,8 +25,9 @@
         <ImageView
             android:id="@+id/iv_poster"
             android:layout_width="75dp"
-            android:layout_height="90dp"
-            android:scaleType="center"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            imageFromUrl="@{movieItem.component3()}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:background="@color/gray200"/>
@@ -44,6 +49,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:text="@{movieItem.component1()}"
             app:layout_constraintTop_toTopOf="@id/iv_poster"
             app:layout_constraintEnd_toStartOf="@id/iv_favorite"
             app:layout_constraintStart_toEndOf="@id/iv_poster"
@@ -65,9 +71,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:textColor="@color/black"
+            android:text="@{movieItem.component5()}"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             app:layout_constraintBottom_toTopOf="@id/tv_actor_title"
             app:layout_constraintStart_toEndOf="@id/tv_director_title"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="감독이름"/>
 
         <TextView
@@ -86,9 +96,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:textColor="@color/black"
+            android:text="@{movieItem.component6()}"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/tv_director_title"
             app:layout_constraintBottom_toTopOf="@id/tv_rate_title"
             app:layout_constraintStart_toEndOf="@id/tv_actor_title"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="배우이름"/>
 
         <TextView
@@ -107,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:textColor="@color/black"
+            doubleToString="@{movieItem.component7()}"
             app:layout_constraintTop_toBottomOf="@id/tv_rate_title"
             app:layout_constraintBottom_toTopOf="@id/tv_rate_title"
             app:layout_constraintStart_toEndOf="@id/tv_rate_title"
